@@ -25,8 +25,8 @@ export const getQR = createServerFn()
 export const dataQuery = queryOptions({
   queryKey: ['machines'],
   queryFn: () => getData(),
-  staleTime: 60 * 1000,
-  refetchInterval: 60 * 1000,
+  staleTime: 2 * 60 * 1000,
+  refetchInterval: 6 * 60 * 1000,
 })
 
 export const qrQuery = queryOptions({
