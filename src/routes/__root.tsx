@@ -19,10 +19,18 @@ export const Route = createRootRouteWithContext<RouterContext>()({
       { title: 'DUWash' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: 'theme-color', content: '#171717' },
-      { name: 'mobile-web-app-capabale', content: 'yes' },
-      { name: 'apple-touch-icon', content: '/duwo.png' },
+      { name: 'mobile-web-app-capable', content: 'yes' },
     ],
-    links: [{ rel: 'stylesheet', href: styleCss }],
+    links: [
+      { rel: 'stylesheet', href: styleCss },
+      { rel: 'manifest', href: '/manifest.webmanifest' },
+      { rel: 'apple-touch-icon', href: '/duwo.png' },
+    ],
+    scripts: [
+      {
+        children: `if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js')}`,
+      },
+    ],
   }),
   shellComponent: RootComponent,
 })

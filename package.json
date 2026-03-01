@@ -38,7 +38,6 @@
     "prettier": "^3.5.3",
     "typescript": "^5.7.2",
     "vite": "^7.1.7",
-    "vite-plugin-pwa": "^1.2.0",
     "vite-plugin-solid": "^2.11.10",
     "zod": "^4.3.6"
   }

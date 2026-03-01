@@ -1,0 +1,17 @@
+{
+  "name": "DUWash",
+  "short_name": "DUWash",
+  "description": "Washing machine booking & status",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#171717",
+  "background_color": "#171717",
+  "icons": [
+    {
+      "src": "duwo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
