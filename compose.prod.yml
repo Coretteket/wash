@@ -1,16 +1,14 @@
 services:
   wash:
     build: .
-    ports:
-      - '3000:3000'
     env_file:
       - .env
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.weer.rule=Host(`wash.qntn.io`)"
-      - "traefik.http.routers.weer.entrypoints=websecure"
-      - "traefik.http.routers.weer.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.wash.rule=Host(`wash.qntn.io`)"
+      - "traefik.http.routers.wash.entrypoints=websecure"
+      - "traefik.http.routers.wash.tls.certresolver=letsencrypt"
 
 networks:
   traefik:
