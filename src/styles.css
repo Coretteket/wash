@@ -1,0 +1,16 @@
+@import 'tailwindcss';
+
+@layer base {
+  html {
+    background-color: theme(--color-neutral-900);
+    color: theme(--color-neutral-100);
+    font-size: 1.125rem;
+    font-family:
+      ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas,
+      'DejaVu Sans Mono', monospace;
+  }
+
+  * {
+    border-color: theme(--color-neutral-700);
+  }
+}
