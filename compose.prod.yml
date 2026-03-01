@@ -4,6 +4,8 @@ services:
     env_file:
       - .env
     restart: unless-stopped
+    networks:
+      - traefik
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.wash.rule=Host(`wash.qntn.io`)"
