@@ -8,8 +8,14 @@
   "background_color": "#171717",
   "icons": [
     {
-      "src": "duwo.png",
+      "src": "duwo-160.png",
       "sizes": "160x160",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "duwo-512.png",
+      "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     }
