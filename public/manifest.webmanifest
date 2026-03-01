@@ -9,7 +9,7 @@
   "icons": [
     {
       "src": "duwo.png",
-      "sizes": "512x512",
+      "sizes": "160x160",
       "type": "image/png",
       "purpose": "any"
     }
