@@ -17,11 +17,10 @@ export const Route = createFileRoute('/login')({
     return (
       <div class="min-h-screen p-6">
         <main class="max-w-sm mx-auto">
-          <div class="flex justify-between h-9.5 items-center mb-6">
-            <h1 class="text-lg font-bold tracking-widest text-white leading-none">
-              DUWash
-            </h1>
-          </div>
+          <h1 class="text-lg font-bold tracking-widest text-white mb-4">
+            DUWash
+          </h1>
+
           <section class="border border-neutral-700">
             <SectionHeader label="Authentication" />
             <form

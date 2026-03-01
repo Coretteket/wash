@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/solid-query'
 import { createFileRoute, useNavigate } from '@tanstack/solid-router'
-import { For, Show } from 'solid-js'
+import { createEffect, createSignal, For, onCleanup, Show } from 'solid-js'
 import { MachineCount, BookingRow, SectionHeader, QueryGuard } from '~/lib/ui'
 import { verifyAuth, logoutAuth } from '~/lib/auth'
 import { createNow } from '~/lib/state'
@@ -20,6 +20,15 @@ export const Route = createFileRoute('/')({
     const navigate = useNavigate()
     const queryClient = useQueryClient()
 
+    const [confirmLogout, setConfirmLogout] = createSignal(false)
+
+    createEffect(() => {
+      if (confirmLogout()) {
+        const timeout = setTimeout(() => setConfirmLogout(false), 5000)
+        onCleanup(() => clearTimeout(timeout))
+      }
+    })
+
     const logout = useMutation(() => ({
       mutationFn: () => logoutAuth(),
       onSuccess: async () => {
@@ -32,16 +41,7 @@ export const Route = createFileRoute('/')({
     return (
       <div class="min-h-screen p-6">
         <main class="max-w-sm mx-auto">
-          <div class="flex justify-between h-9.5 items-center mb-6">
-            <h1 class="text-lg font-bold tracking-widest text-white">DUWash</h1>
-            <button
-              class="text-sm uppercase tracking-widest text-neutral-400 border px-3 py-1.5 transition-colors cursor-pointer"
-              disabled={logout.isPending}
-              onClick={() => logout.mutate()}
-            >
-              Logout
-            </button>
-          </div>
+          <h1 class="text-lg font-bold tracking-widest text-white mb-4">DUWash</h1>
 
           <section class="border border-neutral-700 mb-4">
             <SectionHeader
@@ -112,12 +112,23 @@ export const Route = createFileRoute('/')({
 
           <a
             href="https://duwo.multiposs.nl"
-            class="border p-4 uppercase w-full block text-center text-sm"
+            class="border p-4 uppercase w-full block text-center text-sm mb-4"
             rel="noreferer noopener"
             target="_blank"
           >
             Go to real site
           </a>
+
+          <button
+            class="border p-4 uppercase w-full block text-center text-sm mt-2 text-neutral-400 transition-colors cursor-pointer"
+            disabled={logout.isPending}
+            onClick={() => {
+              if (confirmLogout()) logout.mutate()
+              else setConfirmLogout(true)
+            }}
+          >
+            {confirmLogout() ? 'You sure?' : 'Logout'}
+          </button>
         </main>
       </div>
     )
